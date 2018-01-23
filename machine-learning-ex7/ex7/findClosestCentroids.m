@@ -21,9 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
+for i = 1:length(X),
+  min_t = 2 ^ 30;
+  for j = 1:K,
+    mt = sqrt(sum((X(i,:) - centroids(j,:)) .^ 2));
+    if mt < min_t;
+      min_t = mt;      idx(i, 1) = j;
+    end
+  end
+end
+      
 
 
 
